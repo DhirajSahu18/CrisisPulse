@@ -103,6 +103,15 @@ const completedTasksChart = {
     },
   ],
 };
+const pieChart = {
+  type: 'pie',
+  height: 220,
+  series: [3, 2, 1, 2, 1, 1, 4],
+  options: {
+    colors: ['#388e3c', '#f44336', '#ff9800', '#2196f3', '#9c27b0', '#795548', '#607d8b'],
+    labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+  },
+};
 
 export const statisticsChartsData = [
   {
@@ -112,6 +121,13 @@ export const statisticsChartsData = [
     footer: "campaign sent 3 days ago",
     chart: websiteViewsChart,
   },
+  // {
+  //   color: "white",
+  //   title: "pie Chart",
+  //   description: "This Week Predictions",
+  //   footer: "campaign sent 3 days ago",
+  //   chart: pieChart,
+  // },
   {
     color: "white",
     title: "Our Accuracy",

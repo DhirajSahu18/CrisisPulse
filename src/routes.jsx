@@ -12,6 +12,7 @@ import { SignIn, SignUp } from "@/pages/auth";
 import Chat from "./pages/dashboard/Chat";
 import FileBox from "./pages/dashboard/Prediction";
 import TweetCard from "./widgets/common/Tweet";
+import Allocation from "./pages/dashboard/Allocation";
 
 const icon = {
   className: "w-5 h-5 text-inherit",
@@ -56,6 +57,12 @@ export const routes = [
         name: "News",
         path: "/news",
         element: <TweetCard />,
+      },
+      {
+        icon: <TableCellsIcon {...icon} />,
+        name: "Allocation",
+        path: "/allocation",
+        element: <Allocation />,
       },
       {
         icon: <InformationCircleIcon {...icon} />,

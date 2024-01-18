@@ -70,7 +70,7 @@ const FileBox = () => {
         throw new Error(`HTTP error! Status: ${res.status}`);
       }
 
-      const data = await response.json();
+      const data = await res.json();
       console.log('Data received:', data);
       setresponseMsg(data.result)
       setShowOutput(true);
@@ -91,7 +91,8 @@ const FileBox = () => {
             required
             className="mb-4 p-2 border border-gray-400 rounded-md block"
           />
-          <select name="Architecture" id="Architecture" onChange={e => setArchitecture(e.target.value)}>
+          <select name="Architecture" id="Architecture" onChange={e => setArchitecture(e.target.value)} className='block mx-auto w-full my-2 h-5 md:my-4'>
+            <option value="select Area">--Select Area--</option>
             <option value="bridge">bridge</option>
             <option value="building">building</option>
             <option value="city">city</option>
