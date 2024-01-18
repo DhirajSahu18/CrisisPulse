@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MDBContainer,
   MDBRow,
@@ -40,13 +40,40 @@ export default function Chat() {
         msg : "Aur yeh working hai kya"
     },
 ])
+useEffect(()=>{
+  fetchData()
+},[])
+
+const fetchData = async (msg) => {
+  console.log(msg)
+  try {
+    const response = await fetch('http://127.0.0.1:5000/chatbot', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        // Add any additional headers if required
+      },
+      body: JSON.stringify({query : msg}),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Data received:', data);
+    setConversation([...conversation , { id : 2 , msg : data.result}])
+  } catch (error) {
+    console.error('Error:', error.message);
+  }
+};
 
     const handleSend = () =>{
         id===1 ? setId(2) : setId(1);if (msg !== '') {
-            setConversation([...conversation , { id : id , msg : msg}])
+            setConversation([...conversation , { id : 1 , msg : msg}])
         }
+        fetchData(msg)
         setmsg('')
-        console.log(conversation)
     }
 
   return (

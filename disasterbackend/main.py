@@ -5,8 +5,9 @@ from flask_cors import CORS
 from hugchat import hugchat
 from hugchat.login import Login
 import json
-from dotenv import load_dotenv
 import os
+HUGGINGFACE_EMAIL = "tejasgotavade@gmail.com"
+HUGGINGFACE_PASSWORD = "Tejas@999"
 
 app = Flask(__name__)
 
@@ -16,10 +17,8 @@ CORS(app,origins="*")
 loaded_model1 = joblib.load('model_precip.joblib')
 loaded_model2 = joblib.load('model_max.joblib')
 loaded_model3 = joblib.load('model_min.joblib')
-load_dotenv()
-
-email = os.getenv('HUGGINGFACE_EMAIL')
-password = os.getenv('HUGGINGFACE_PASSWORD')
+email = HUGGINGFACE_EMAIL
+password = HUGGINGFACE_PASSWORD
 
 
 # Log in to huggingface and grant authorization to huggingchat
