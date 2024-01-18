@@ -25,12 +25,12 @@ const TweetCard = () => {
   }
   };
   const apiKey = 'da88552810e548d9961d63dccac69eb5';
-  const apiUrl = 'https://newsapi.org/v2/everything?q=volcano+tsunami+earthquake&sortBy=publishedAt';
+  const apiUrl = 'https://newsapi.org/v2/everything?q=volcano+tsunami&sortBy=publishedAt';
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const response = await fetch(`${apiUrl}&apiKey=${apiKey}`);
+        const response = await fetch(`${apiUrl}&apiKey=${apiKey}`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

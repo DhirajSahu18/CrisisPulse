@@ -24,20 +24,24 @@ export default function Chat() {
         msg : "Hello"
     },
         {
-        id : 1,
-        msg : "Kya haal chaal"
-    },
-        {
         id : 2,
-        msg : "Arey sab sorted bro tu bata"
+        msg : "Hello Sir,How may I Help You ?"
     },
         {
         id : 1,
-        msg : "Mai bhi sahi"
+        msg : "What is the importance of early warning systems in disaster management?"
     },
         {
         id : 2,
-        msg : "Aur yeh working hai kya"
+        msg : "Early warning systems are crucial in disaster management as they provide timely information about potential disasters, allowing communities to prepare and evacuate. This proactive approach helps minimize loss of life, property damage, and ensures a more effective response."
+    },
+        {
+        id : 1,
+        msg : " How can communities enhance resilience in the face of natural disasters?"
+    },
+        {
+        id : 2,
+        msg : "Communities can enhance resilience by implementing measures such as building infrastructure to withstand disasters, creating emergency response plans, conducting regular drills, raising awareness, and fostering community collaboration. Building resilience is essential for reducing vulnerability and recovering quickly from disasters."
     },
 ])
 useEffect(()=>{
@@ -62,15 +66,18 @@ const fetchData = async (msg) => {
 
     const data = await response.json();
     console.log('Data received:', data);
-    setConversation([...conversation , { id : 2 , msg : data.result}])
+    setConversation(prevValue => ([...prevValue , { id : 2 , msg : data.result}]))
+    // conversation[conversation.length] = { id : 2 , msg : data.result}
   } catch (error) {
     console.error('Error:', error.message);
   }
 };
 
-    const handleSend = () =>{
-        id===1 ? setId(2) : setId(1);if (msg !== '') {
-            setConversation([...conversation , { id : 1 , msg : msg}])
+const handleSend = () =>{
+  id===1 ? setId(2) : setId(1);
+  if (msg !== '') {
+          setConversation(prevValue => ([...prevValue , { id : 1 , msg : msg}]))
+            // conversation[conversation.length] = { id : 1 , msg : msg}
         }
         fetchData(msg)
         setmsg('')
@@ -82,9 +89,9 @@ const fetchData = async (msg) => {
         <MDBCol md="10" lg="8" xl="6">
           <MDBCard id="chat2" style={{ borderRadius: "15px" }}>
             <MDBCardHeader className="d-flex justify-content-between align-items-center p-3">
-              <h5 className="mb-0">Chat</h5>
-              <MDBBtn color="primary" size="sm" rippleColor="dark">
-                Let's Chat App
+              <h5 className="mb-0 font-extrabold text-2xl">CrisisCompanion</h5>
+              <MDBBtn color="primary" size="md" rippleColor="dark">
+              Your Trusty Guide in Emergency Situations
               </MDBBtn>
             </MDBCardHeader>
             {/* <MDBScrollbar
