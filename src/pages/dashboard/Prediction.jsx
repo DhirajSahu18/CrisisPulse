@@ -106,18 +106,7 @@ const FileBox = () => {
           <h2 className="text-xl font-bold mb-2">Output Sections:</h2>
           <div className="bg-white p-4 rounded-md shadow-md mb-4">
             {/* Your first output section */}
-            <h3 className="text-lg font-semibold mb-2">Section 1:</h3>
-            {responseMsg && <p className="text-gray-700">{responseMsg}</p>}
-          </div>
-          <div className="bg-white p-4 rounded-md shadow-md mb-4">
-            {/* Your second output section */}
-            <h3 className="text-lg font-semibold mb-2">Section 2:</h3>
-            <p className="text-gray-700">Text for the second section goes here.</p>
-          </div>
-          <div className="bg-white p-4 rounded-md shadow-md">
-            {/* Your third output section */}
-            <h3 className="text-lg font-semibold mb-2">Section 3:</h3>
-            <p className="text-gray-700">Text for the third section goes here.</p>
+            {responseMsg && <p className="text-gray-700 md:text-2xl">{responseMsg}</p>}
           </div>
         </div>
       )}
