@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Typography,
   Card,
@@ -26,8 +26,16 @@ import {
   ordersOverviewData,
 } from "@/data";
 import { CheckCircleIcon, ClockIcon } from "@heroicons/react/24/solid";
+import { MapContainer, TileLayer, useMap } from 'react-leaflet'
+import TweetCard from "@/widgets/common/Tweet";
 
 export function Home() {
+  const [centre, setCenter] = useState({
+    lat: 19.075983,
+    lng: 72.877655
+  })
+  const ZOOM_LEVEL = 9;
+
   return (
     <div className="mt-12">
       <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
@@ -65,6 +73,7 @@ export function Home() {
           />
         ))}
       </div>
+      <TweetCard/>
       {/* <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
         <Card className="overflow-hidden xl:col-span-2 border border-blue-gray-100 shadow-sm">
           <CardHeader
